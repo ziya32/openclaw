@@ -8,6 +8,7 @@ import {
   resolveEffectiveHomeDir,
   resolveRequiredHomeDir,
 } from "./infra/home-dir.js";
+import { shortenHomeInString as shortenHomeInStringWithDisplay } from "./shared/shorten-home.js";
 
 export async function ensureDir(dir: string) {
   await fs.promises.mkdir(dir, { recursive: true });
@@ -363,14 +364,7 @@ export function shortenHomePath(input: string): string {
 }
 
 export function shortenHomeInString(input: string): string {
-  if (!input) {
-    return input;
-  }
-  const display = resolveHomeDisplayPrefix();
-  if (!display) {
-    return input;
-  }
-  return input.split(display.home).join(display.prefix);
+  return shortenHomeInStringWithDisplay(input, resolveHomeDisplayPrefix());
 }
 
 export function displayPath(input: string): string {

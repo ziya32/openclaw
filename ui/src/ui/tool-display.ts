@@ -9,7 +9,7 @@ import {
   resolveWriteDetail,
   type ToolDisplaySpec as ToolDisplaySpecBase,
 } from "../../../src/agents/tool-display-common.js";
-import { shortenHomeInString } from "../../../src/utils.js";
+import { shortenHomeInString } from "../../../src/shared/shorten-home.js";
 import rawConfig from "./tool-display.json" with { type: "json" };
 
 type ToolDisplaySpec = ToolDisplaySpecBase & {
